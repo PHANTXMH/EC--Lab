@@ -67,8 +67,8 @@ C:\Users\marca\source\repos\Gamora\Gamora\bin\Newtonsoft.Json.xml
 C:\Users\marca\source\repos\Gamora\Gamora\bin\Antlr3.Runtime.pdb
 C:\Users\marca\source\repos\Gamora\Gamora\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\marca\source\repos\Gamora\Gamora\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\marca\source\repos\Gamora\Gamora\obj\Debug\Gamora.csproj.AssemblyReference.cache
 C:\Users\marca\source\repos\Gamora\Gamora\obj\Debug\Gamora.csproj.CoreCompileInputs.cache
 C:\Users\marca\source\repos\Gamora\Gamora\obj\Debug\Gamora.csproj.CopyComplete
 C:\Users\marca\source\repos\Gamora\Gamora\obj\Debug\Gamora.dll
 C:\Users\marca\source\repos\Gamora\Gamora\obj\Debug\Gamora.pdb
+C:\Users\marca\source\repos\Gamora\Gamora\obj\Debug\Gamora.csproj.AssemblyReference.cache

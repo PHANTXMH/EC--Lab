@@ -24,6 +24,18 @@ namespace Gamora
             this.unitPrice = unitPrice;
         }
 
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+            set
+            {
+                id = value;
+            }
+        }
+
         public string Name
         {
             get

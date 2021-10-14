@@ -11,6 +11,7 @@ namespace Gamora
 {
     public class Global : HttpApplication
     {
+        public static List<CartItem> myCartList = new List<CartItem>();
         void Application_Start(object sender, EventArgs e)
         {
             // Code that runs on application startup

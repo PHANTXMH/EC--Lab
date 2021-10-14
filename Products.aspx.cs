@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Gamora
-{
+{ 
     public partial class Products : System.Web.UI.Page
     {
         Game fifa22 = new Game(1, "FIFA22", "FIFA 22 is an association football simulation video game published by Electronic Arts as part of the FIFA series.",
@@ -26,7 +26,8 @@ namespace Gamora
             "SHOOTER", "~/Images/codmodernwarfare.jfif",2000);
         Game codblackops = new Game(9, "Call of Duty: Black Ops",
             "Call of Duty: Black Ops is a 2010 first-person shooter video game developed by Treyarch and published by Activision.",
-            "SHOOTER", "~/Images/codblackops.jfif",1800);
+            "SHOOTER", "~/Images/codblackops.jfif",1800);        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             fifa22Image.ImageUrl = fifa22.ImageUrl;
@@ -75,10 +76,85 @@ namespace Gamora
             codblackopsDescription.Text = codblackops.Description;
         }
 
-
-        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void fifa22Button_Click(object sender, EventArgs e)
         {
-            Response.Redirect("About.aspx");
+            if(Global.myCartList.Find(x => x.Id == fifa22.Id) == null)
+            {
+                Global.myCartList.Add(new CartItem(fifa22.Id, fifa22.Name, fifa22.Price, 1));
+                Response.Redirect("Cart.aspx");
+            }            
+        }
+
+        protected void fifa21Button_Click(object sender, EventArgs e)
+        {
+            if (Global.myCartList.Find(x => x.Id == fifa21.Id) == null)
+            {
+                Global.myCartList.Add(new CartItem(fifa21.Id, fifa21.Name, fifa21.Price, 1));
+                Response.Redirect("Cart.aspx");
+            }
+        }
+
+        protected void fifa20Button_Click(object sender, EventArgs e)
+        {
+            if (Global.myCartList.Find(x => x.Id == fifa20.Id) == null)
+            {
+                Global.myCartList.Add(new CartItem(fifa20.Id, fifa20.Name, fifa20.Price, 1));
+                Response.Redirect("Cart.aspx");
+            }
+        }
+
+        protected void nba2k22Button_Click(object sender, EventArgs e)
+        {
+            if (Global.myCartList.Find(x => x.Id == nba2k22.Id) == null)
+            {
+                Global.myCartList.Add(new CartItem(nba2k22.Id, nba2k22.Name, nba2k22.Price, 1));
+                Response.Redirect("Cart.aspx");
+            }
+        }
+
+        protected void nba2k21Button_Click(object sender, EventArgs e)
+        {
+            if (Global.myCartList.Find(x => x.Id == nba2k21.Id) == null)
+            {
+                Global.myCartList.Add(new CartItem(nba2k21.Id, nba2k21.Name, nba2k21.Price, 1));
+                Response.Redirect("Cart.aspx");
+            }
+        }
+
+        protected void nba2k20Button_Click(object sender, EventArgs e)
+        {
+            if (Global.myCartList.Find(x => x.Id == nba2k20.Id) == null)
+            {
+                Global.myCartList.Add(new CartItem(nba2k20.Id, nba2k20.Name, nba2k20.Price, 1));
+                Response.Redirect("Cart.aspx");
+            }
+        }
+
+        protected void codcoldwarButton_Click(object sender, EventArgs e)
+        {
+            if (Global.myCartList.Find(x => x.Id == codcoldwar.Id) == null)
+            {
+                Global.myCartList.Add(new CartItem(codcoldwar.Id, codcoldwar.Name, codcoldwar.Price, 1));
+                Response.Redirect("Cart.aspx");
+            }
+        }
+
+        protected void codmodernwarfareButon_Click(object sender, EventArgs e)
+        {
+            if (Global.myCartList.Find(x => x.Id == codmodernwarfare.Id) == null)
+            {
+                Global.myCartList.Add(new CartItem(codmodernwarfare.Id, codmodernwarfare.Name, codmodernwarfare.Price, 1));
+                Response.Redirect("Cart.aspx");
+            }
+        }
+
+        protected void codblackopsButton_Click(object sender, EventArgs e)
+        {
+            if (Global.myCartList.Find(x => x.Id == codblackops.Id) == null)
+            {
+                Global.myCartList.Add(new CartItem(codblackops.Id, codblackops.Name, codblackops.Price, 1));
+                Response.Redirect("Cart.aspx");
+            }
         }
     }
 }

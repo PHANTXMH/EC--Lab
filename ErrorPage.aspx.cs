@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace Gamora
 {
-    public partial class FootballPage : System.Web.UI.Page
+    public partial class ErrorPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Image1.ImageUrl = "Images/sad_img.jpg";
         }
     }
 }

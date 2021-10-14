@@ -51,13 +51,13 @@ namespace Gamora
         protected global::System.Web.UI.WebControls.Label fifa22Price;
 
         /// <summary>
-        /// Button1 control.
+        /// fifa22Button control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button fifa22Button;
 
         /// <summary>
         /// fifa21Image control.
@@ -96,13 +96,13 @@ namespace Gamora
         protected global::System.Web.UI.WebControls.Label fifa21Price;
 
         /// <summary>
-        /// Button2 control.
+        /// fifa21Button control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button fifa21Button;
 
         /// <summary>
         /// fifa20Image control.
@@ -141,13 +141,13 @@ namespace Gamora
         protected global::System.Web.UI.WebControls.Label fifa20Price;
 
         /// <summary>
-        /// Button3 control.
+        /// fifa20Button control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.Button fifa20Button;
 
         /// <summary>
         /// nba2k22Image control.
@@ -186,13 +186,13 @@ namespace Gamora
         protected global::System.Web.UI.WebControls.Label nba2k22Price;
 
         /// <summary>
-        /// Button4 control.
+        /// nba2k22Button control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button4;
+        protected global::System.Web.UI.WebControls.Button nba2k22Button;
 
         /// <summary>
         /// nba2k21Image control.
@@ -231,13 +231,13 @@ namespace Gamora
         protected global::System.Web.UI.WebControls.Label nba2k21Price;
 
         /// <summary>
-        /// Button5 control.
+        /// nba2k21Button control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button5;
+        protected global::System.Web.UI.WebControls.Button nba2k21Button;
 
         /// <summary>
         /// nba2k20Image control.
@@ -276,13 +276,13 @@ namespace Gamora
         protected global::System.Web.UI.WebControls.Label nba2k20Price;
 
         /// <summary>
-        /// Button6 control.
+        /// nba2k20Button control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button6;
+        protected global::System.Web.UI.WebControls.Button nba2k20Button;
 
         /// <summary>
         /// codcoldwarImage control.
@@ -321,13 +321,13 @@ namespace Gamora
         protected global::System.Web.UI.WebControls.Label codcoldwarPrice;
 
         /// <summary>
-        /// Button7 control.
+        /// codcoldwarButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button7;
+        protected global::System.Web.UI.WebControls.Button codcoldwarButton;
 
         /// <summary>
         /// codmodernwarfareImage control.
@@ -366,13 +366,13 @@ namespace Gamora
         protected global::System.Web.UI.WebControls.Label codmodernwarfarePrice;
 
         /// <summary>
-        /// Button8 control.
+        /// codmodernwarfareButon control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button8;
+        protected global::System.Web.UI.WebControls.Button codmodernwarfareButon;
 
         /// <summary>
         /// codblackopsImage control.
@@ -411,12 +411,12 @@ namespace Gamora
         protected global::System.Web.UI.WebControls.Label codblackopsPrice;
 
         /// <summary>
-        /// Button9 control.
+        /// codblackopsButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button9;
+        protected global::System.Web.UI.WebControls.Button codblackopsButton;
     }
 }
