@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,6 +14,16 @@ namespace Gamora
         int total_price, i;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["adminId"] != null)//Cart page will now be log out for admin and this is the logic to log out
+            {
+                Session["adminId"] = null;
+                Response.Redirect("UserLogin.aspx");
+            }else
+            if (Session["userId"] == null)
+            {
+                Response.Redirect("UserLogin.aspx");
+            }            
+
             total_price = 0;
             
             if(Global.myCartList.Count < 1)
@@ -56,7 +68,7 @@ namespace Gamora
                     removeButton.Text = "Remove";
                     minusButton.Text = "-";
                     plusButton.Text = "+";
-                    removeButton.Click += new EventHandler(button_Click);
+                    removeButton.Click += new EventHandler(removeButton_Click);
                    
                     minusButton.Click += new EventHandler(minusQuantityChanged);
                     plusButton.Click += new EventHandler(plusQuantityChanged);
@@ -92,11 +104,32 @@ namespace Gamora
             }
         }
 
-       public void button_Click(object sender, EventArgs e)
+       public void removeButton_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;           
             Global.myCartList.RemoveAt(int.Parse(button.ID));
+            SqlConnection con = new SqlConnection(Global.dbcon);
+            try
+            {
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                SqlCommand cmd = new SqlCommand("DELETE FROM cart where cartid = @cartid AND userid = @userid", con);
+                cmd.Parameters.AddWithValue("@cartid", int.Parse(button.ID));
+                cmd.Parameters.AddWithValue("@userid", int.Parse(Session["userId"].ToString()));
+                cmd.ExecuteNonQuery();
+                con.Close();
+                Response.Redirect("Cart.aspx");
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                con.Close();
+            }
+
             Response.Redirect("Cart.aspx");
+
         }
 
         public void minusQuantityChanged(object sender, EventArgs e)
@@ -107,11 +140,33 @@ namespace Gamora
 
             if(Global.myCartList[item].Quantity > 1)
             {
-                Global.myCartList[item].Quantity -= 1;
+                Global.myCartList[item].Quantity -= 1;            
+            }
+            SqlConnection con = new SqlConnection(Global.dbcon);
+            try
+            {
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                SqlCommand cmd = new SqlCommand("UPDATE cart SET quantity = @quantity WHERE userid = @userid AND cartid = @cartid;", con);
+                cmd.Parameters.AddWithValue("@quantity", Global.myCartList[item].Quantity);
+                cmd.Parameters.AddWithValue("@userid", int.Parse(Session["userId"].ToString()));
+                cmd.Parameters.AddWithValue("@cartid", item);
+                cmd.ExecuteNonQuery();
+                con.Close();
                 Response.Redirect("Cart.aspx");
-            }           
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                con.Close();
+            }
+
+            Response.Redirect("Cart.aspx");
         }
-        public void plusQuantityChanged(object  sender, EventArgs e)
+
+        public void plusQuantityChanged(object sender, EventArgs e)
         {
             Button button = sender as Button;
             string itemString = button.ID.Remove(1);
@@ -120,8 +175,73 @@ namespace Gamora
             if (Global.myCartList[item].Quantity < 3)
             {
                 Global.myCartList[item].Quantity += 1;
+            }
+            SqlConnection con = new SqlConnection(Global.dbcon);
+            try
+            {
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }//UPDATE cart SET quantity = 3 WHERE userid = 1 AND cartid = 0;
+                SqlCommand cmd = new SqlCommand("UPDATE cart SET quantity = @quantity WHERE userid = @userid AND cartid = @cartid;", con);
+                cmd.Parameters.AddWithValue("@quantity", Global.myCartList[item].Quantity);
+                cmd.Parameters.AddWithValue("@userid", int.Parse(Session["userId"].ToString()));
+                cmd.Parameters.AddWithValue("@cartid", item);
+                cmd.ExecuteNonQuery();
+                con.Close();
                 Response.Redirect("Cart.aspx");
             }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                con.Close();
+            }
+
+            Response.Redirect("Cart.aspx");
         }
+
+        protected void ProceedButton_Click(object sender, EventArgs e)//function that runs when the checkout button is pressed
+        {
+            if (Global.myCartList.Count < 1)//if statement that checks if there are items in the cart
+            {
+                Response.Write("<script>alert('There are no items in your cart');</script>");
+            }
+            else
+            {                
+                SqlConnection con = new SqlConnection(Global.dbcon);//Global.dbcon would be your connection string that is in your web config file
+                try
+                {
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+
+                    SqlCommand cmd = new SqlCommand("INSERT INTO orders (orderdate, productid, userid, quantity, subtotal) VALUES" +
+                            "(CURRENT_TIMESTAMP, @productid, @userid, @quantity, @subtotal);", con);//this is where your specific sql command will be stored for execution
+                    
+                    foreach (CartItem ci in Global.myCartList)//this foreach method goes through each product in the cart and inserts it into the database using the SqlCommand object
+                    {              
+                        //each of these functions subsitute the key word for example @userid with the actual value to be inputed into the sql command
+                        cmd.Parameters.AddWithValue("@productid", ci.Id);
+                        cmd.Parameters.AddWithValue("@userid", int.Parse(Session["userId"].ToString()));
+                        cmd.Parameters.AddWithValue("@quantity", ci.Quantity);
+                        cmd.Parameters.AddWithValue("@subtotal", ci.ItemTotal);
+                        cmd.ExecuteNonQuery();//this is the command to execute the sql command
+                    }
+
+                    SqlCommand cmd2 = new SqlCommand("DELETE FROM cart WHERE userid = @userid;", con);//this is another sql command to delete the items that were stored in the cart database after checkout
+                    cmd2.Parameters.AddWithValue("@userid", int.Parse(Session["userId"].ToString()));
+                    cmd2.ExecuteNonQuery();
+                    Global.myCartList = new List<CartItem>();
+                    Response.Redirect("Checkout.aspx");
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    Response.Write("<script>alert('" + ex.Message + "');</script>");
+                    con.Close();
+                }
+            }
+        }        
     }
 }

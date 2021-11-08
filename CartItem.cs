@@ -12,6 +12,7 @@ namespace Gamora
         int price;
         int quantity;
         int itemtotal;
+        int productid;
 
         public CartItem(int id, string name, int price, int quantity)
         {

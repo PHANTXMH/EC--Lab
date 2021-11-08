@@ -11,43 +11,34 @@ namespace Gamora
 {
 
 
-    public partial class Cart
+    public partial class AdminDashboard
     {
 
         /// <summary>
-        /// Table1 control.
+        /// AddNewButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table1;
+        protected global::System.Web.UI.WebControls.Button AddNewButton;
 
         /// <summary>
-        /// Table1HeaderRow control.
+        /// ProductTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableHeaderRow Table1HeaderRow;
+        protected global::System.Web.UI.WebControls.Table ProductTable;
 
         /// <summary>
-        /// Table2 control.
+        /// HeaderRow control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table2;
-
-        /// <summary>
-        /// ProceedButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ProceedButton;
+        protected global::System.Web.UI.WebControls.TableHeaderRow HeaderRow;
     }
 }
